@@ -18,7 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('recetas', [RecetaController::class, 'index']);
-Auth::routes();
+Route::get('/recetas', [RecetaController::class, 'index'])->name('recetas.index');
+Route::get('/recetas/create', [RecetaController::class, 'create'])->name('recetas.create');
+Route::post('/recetas', [RecetaController::class, 'store'])->name('recetas.store');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();

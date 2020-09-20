@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Receta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RecetaController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,9 +20,7 @@ class RecetaController extends Controller
      */
     public function index()
     {
-        $recetas = ['Recetas Pizza', 'Receta Hamburguesa', 'Receta Tacos'];
-
-        return view('recetas.index')->with('recetas',$recetas);
+        return view('recetas.index');
     }
 
     /**
@@ -25,7 +30,7 @@ class RecetaController extends Controller
      */
     public function create()
     {
-        //
+        return view('recetas.create');
     }
 
     /**
@@ -36,16 +41,25 @@ class RecetaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'titulo' => 'required|min:6'
+        ]);
+
+        DB::table('recetas')->insert([
+            'titulo' => $data['titulo']
+        ]);
+
+        // Redireccionar
+        return redirect()->action([RecetaController::class, 'index']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Receta  $receta
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Receta $receta)
     {
         //
     }
@@ -53,10 +67,10 @@ class RecetaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Receta  $receta
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Receta $receta)
     {
         //
     }
@@ -65,10 +79,10 @@ class RecetaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Receta  $receta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Receta $receta)
     {
         //
     }
@@ -76,10 +90,10 @@ class RecetaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Receta  $receta
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Receta $receta)
     {
         //
     }
