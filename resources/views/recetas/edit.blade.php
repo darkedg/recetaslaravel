@@ -116,7 +116,7 @@
         </div>
 
         <div class="form-group mt-3">
-          <input type="submit" class="btn btn-primary" value="Agregar receta">
+          <input type="submit" class="btn btn-primary" value="Actualizar receta">
         </div>
       </form>
 
