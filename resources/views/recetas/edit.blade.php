@@ -93,7 +93,7 @@
         </div>
 
         <div class="form-group">
-          <label for="categoria">Elige la imagen</label>
+          <label for="imagen">Elige la imagen</label>
 
           <input
             id="imagen"
