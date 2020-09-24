@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('botones')
-  <a href="{{ route('recetas.create') }}" class="btn btn-outline-primary mr-2 text-uppercase font-weight-bold">Crear receta</a>
-  <a href="{{ route('perfiles.edit', ['perfil' => Auth::user()->id]) }}" class="btn btn-outline-success mr-2 text-uppercase font-weight-bold">Editar perfil</a>
-  <a href="{{ route('perfiles.show', ['perfil' => Auth::user()->id]) }}" class="btn btn-outline-info mr-2 text-uppercase font-weight-bold">Ver perfil</a>
+  @include('ui.navegacion')
 @endsection
 
 @section('content')
@@ -37,6 +35,11 @@
         @endforeach
       </tbody>
     </table>
+
+    <div class="col-12 mt-4 justify-content-center d-flex">
+      {{ $recetas->links() }}
+    </div>
+
   </div>
     
 @endsection
