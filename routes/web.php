@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\LikesController;
 use App\Http\Controllers\PerfilController;
@@ -26,6 +27,8 @@ Route::get('/recetas/{receta}', [RecetaController::class, 'show'])->name('receta
 Route::get('/recetas/{receta}/edit', [RecetaController::class, 'edit'])->name('recetas.edit');
 Route::put('/recetas/{receta}', [RecetaController::class, 'update'])->name('recetas.update');
 Route::delete('/recetas/{receta}', [RecetaController::class, 'destroy'])->name('recetas.destroy');
+
+Route::get('/categoria/{categoriaReceta}', [CategoriasController::class, 'show'])->name('categorias.show');
 
 // Route::resource('recetas', RecetaController::class);
 
