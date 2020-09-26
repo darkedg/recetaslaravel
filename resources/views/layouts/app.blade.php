@@ -107,6 +107,8 @@
             </div>
         </nav>
 
+        @yield('hero')
+
         <div class="container">
             <div class="row">
                 <div class="py-4 mt-4 col-12">

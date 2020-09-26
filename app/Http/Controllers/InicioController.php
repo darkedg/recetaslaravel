@@ -25,7 +25,7 @@ class InicioController extends Controller
         $recetas = [];
 
         foreach($categorias as $categoria) {
-            $recetas[ Str::slug($categoria->nombre) ][] = Receta::where('categoria_id', $categoria->id)->take(3)->get();
+            $recetas[ Str::slug($categoria->nombre) ][] = Receta::where('categoria_id', $categoria->id)->take(6)->get();
         }
 
         return view('inicio.index', compact('nuevas', 'recetas', 'votadas'));
